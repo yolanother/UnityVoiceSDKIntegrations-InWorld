@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace VoiceSDK.Integrations.Inworld
 {
-    public class InworldInteractionSpeakerAdapter : MonoBehaviour
+    public class CharacterSpeakerAdapter : MonoBehaviour
     {
         [SerializeField] private TTSSpeaker _speaker;
         [SerializeField] private InworldInteraction _interaction;
@@ -23,7 +23,8 @@ namespace VoiceSDK.Integrations.Inworld
             _interaction.InworldEvents.OnSpeak.RemoveListener(_speaker.SpeakQueued);
         }
 
-        [MenuItem("GameObject/Voice SDK/Inworld Character Speaker", false, 10)]
+        #if UNITY_EDITOR
+        [MenuItem("GameObject/Voice SDK/Inworld/Character Speaker", false, 10)]
         private static void CreateSpeaker()
         {
             var voiceService = FindObjectOfType<VoiceService>();
@@ -52,7 +53,7 @@ namespace VoiceSDK.Integrations.Inworld
             }
             else
             {
-                var gameObject = new GameObject("Inworld Character Speaker");
+                var gameObject = new GameObject("Character Speaker");
                 speaker = gameObject.AddComponent<TTSSpeaker>();
                 var audioSource = speaker.gameObject.AddComponent<AudioSource>();
                 speaker.AudioSource = audioSource;
@@ -60,7 +61,7 @@ namespace VoiceSDK.Integrations.Inworld
 
             speaker.name = "Inworld Character Speaker";
 
-            var adapter = speaker.gameObject.AddComponent<InworldInteractionSpeakerAdapter>();
+            var adapter = speaker.gameObject.AddComponent<CharacterSpeakerAdapter>();
             
             adapter._speaker = speaker;
             adapter._interaction = FindObjectOfType<InworldInteraction>();
@@ -73,5 +74,6 @@ namespace VoiceSDK.Integrations.Inworld
                 speaker.transform.parent = Selection.activeGameObject.transform;
             }
         }
+        #endif
     }
 }

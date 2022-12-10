@@ -14,7 +14,7 @@ namespace VoiceSDK.Integrations.Inworld
         [SerializeField] private UnityEvent<string> _onOutOfDomain = new UnityEvent<string>();
 
         #if UNITY_EDITOR
-        [MenuItem("GameObject/Voice SDK/Character Out of Domain Handler", false, 10)]
+        [MenuItem("GameObject/Voice SDK/Inworld/Character Out of Domain Handler", false, 10)]
         private static void CreateComponent(MenuCommand menuCommand)
         {
             var go = new GameObject("Character Out of Domain Handler");
