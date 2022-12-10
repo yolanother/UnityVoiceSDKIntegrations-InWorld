@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "displayName": "",
+  "name": "com.unity.voicesdk.integrations",
+  "displayName": "VoiceSDK - Integrations - InWorld",
   "version": "0.0.1",
   "unity": "2019.4",
   "description": "",
